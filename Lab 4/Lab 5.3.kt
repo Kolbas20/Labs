@@ -1,15 +1,16 @@
-enum class ErrorCode(val description: String) {
-    ERROR_100("Ошибка сети"),
-    ERROR_200("Ошибка сервера"),
-    ERROR_300("Ошибка базы данных")
-}
+class Country(val countryName: String, val nationality: String)
 
-fun displayErrorMessage(errorCode: ErrorCode): String {
-    return errorCode.description
+val countries = listOf(
+    Country("США", "Американец"),
+    Country("Россия", "Русский"),
+    Country("Япония", "Японец")
+)
+
+fun findNationality(countryCode: String): String {
+    return countries.find { it.countryName == countryCode }?.nationality ?: "Информация о стране отсутствует"
 }
 
 fun main() {
-    val errorCode = readLine()!!.toInt()
-    val errorDescription = displayErrorMessage(ErrorCode.values()[errorCode])
-    println(errorDescription)
+    val countryCode = readLine()!!
+    println(findNationality(countryCode))
 }
