@@ -1,0 +1,16 @@
+//10-1
+fun main()
+{
+    println(countdown(5)) // [5, 4, 3, 2, 1]
+    println(countdown(0)) // []
+}
+
+fun countdown(n: Int): List<Int>
+{
+    return when (n)
+    {
+        0 -> emptyList()
+        else -> listOf(n) + countdown(n - 1)
+    }
+}
+//KSEIS223
